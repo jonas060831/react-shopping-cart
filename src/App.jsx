@@ -1,8 +1,9 @@
+import Shop from "./components/Shop/Shop"
 
 
 const App = () => {
   return (
-    <div>App</div>
+    <Shop />
   )
 }
 
