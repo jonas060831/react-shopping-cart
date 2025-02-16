@@ -10,9 +10,14 @@ const Shop = () => {
   const [shopInventory, setShopInventory] = useState(inventoryData)
   const [userInventory, setUserInventory] = useState([])
 
-  const handleAddItem = () => {
+  const handleAddItem = (item) => {
+    setUserInventory([...userInventory, item])
+    setShopInventory(shopInventory.filter( (storeItem) => storeItem._id !== item._id))
+  }
 
-
+  const handleRemoveItem = (item) => {
+    setShopInventory([...shopInventory, item])
+    setUserInventory(userInventory.filter(shopItem => shopItem._id !== item._id))
   }
 
   return (
@@ -22,12 +27,15 @@ const Shop = () => {
         
         <section className="shop-section">
             <InventoryList
+            title='Shop Inventory'
             inventory={shopInventory}
+            handleAddItem={handleAddItem}
             />
 
             <InventoryList
             inventory={userInventory}
             title='User Inventory'
+            handleRemoveItem={handleRemoveItem}
             />
         </section>
 
