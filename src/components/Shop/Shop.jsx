@@ -3,15 +3,16 @@ import { useState } from "react"
 import { inventoryData } from "../../data/data"
 import { InventoryList } from "../InventoryList/InventoryList"
 
+import './Shop.css'
+
 const Shop = () => {
 
-  const [inventory, setInventory] = useState(inventoryData)
-
+  const [shopInventory, setShopInventory] = useState(inventoryData)
+  const [userInventory, setUserInventory] = useState([])
 
   const handleAddItem = () => {
-    const newItem = {_id: 62345, name: 'Banana', price: 0.27}
-    const newItemTwo = { _id: 22345, name: 'Avocado', price: 2 };
-    setInventory([newItem, newItemTwo])
+
+
   }
 
   return (
@@ -19,10 +20,16 @@ const Shop = () => {
 
         <h1>Shop</h1>
         
-        <button onClick={handleAddItem} >Click Here</button>
-        <InventoryList
-         inventory={inventory}
-        />
+        <section className="shop-section">
+            <InventoryList
+            inventory={shopInventory}
+            />
+
+            <InventoryList
+            inventory={userInventory}
+            title='User Inventory'
+            />
+        </section>
 
     </main>
   )
