@@ -13,7 +13,7 @@ export const InventoryList = (props) => {
                     props.inventory.map(item => (
                         <li key={item._id}>
                             <p>{item.name}</p>
-                            <p>Price: {item.price}</p>
+                            <p>Price: {item.price.toFixed(2)}</p>
 
                             {
                                 props.handleAddItem ? (
@@ -27,7 +27,7 @@ export const InventoryList = (props) => {
                 }
             </ul>
             ) : (
-                <>Empty</>
+                <p>Empty</p>
             )
         }
     </div>
